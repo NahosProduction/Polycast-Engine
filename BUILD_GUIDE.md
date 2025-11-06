@@ -11,7 +11,7 @@ Si aucune icône n'est présente, la compilation se fera sans icône.
 
 ## 📦 **Builds d'Export**
 
-Dans le PowerShell copier coller le script :
+Dans le PowerShell copier coller le script de :
 ```
 build.ps1
 ```
@@ -46,3 +46,4 @@ build/
 4. **Distribution** : Partager les dossiers/fichiers de `build/`
 
 C'est tout ! 🚀
+
