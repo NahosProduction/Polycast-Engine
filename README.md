@@ -24,49 +24,21 @@ Ce projet implémente un moteur de jeu 2.5D utilisant la technique du raycasting
 ├── raycaster.h/c       # Moteur de rendu raycasting
 ├── lighting.h/c        # Système d'éclairage dynamique
 ├── map_loader.h/c      # Chargement dynamique de maps
-├── map_editor_with_lights.c # Éditeur de map avec support lumières
-├── Makefile            # Script de compilation
+├── map_editor.c        # Éditeur de map avec support lumières
+├── tasks.json          # Script de compilation
 └── README.md           # Documentation
-```
-
-## Prérequis
-
-### Ubuntu/Debian
-```bash
-sudo apt-get update
-sudo apt-get install libsdl2-dev libsdl2-image-dev build-essential
-```
-
-### Fedora/RHEL
-```bash
-sudo dnf install SDL2-devel SDL2_image-devel gcc make
-```
-
-### Arch Linux
-```bash
-sudo pacman -S sdl2 sdl2_image gcc make
 ```
 
 ## Compilation
 
 1. **Compilation du moteur** :
 ```bash
-make
+ctrl + shift + b
 ```
 
-2. **Compilation de l'éditeur avec lumières** :
+2. **Compilation de l'éditeur de map** :
 ```bash
-make editor
-```
-
-3. **Installation des dépendances** (Ubuntu) :
-```bash
-make install-deps-ubuntu
-```
-
-4. **Nettoyage** :
-```bash
-make clean
+ctrl + shift + b
 ```
 
 ## Structure des répertoires
@@ -74,16 +46,27 @@ make clean
 Le moteur attend cette structure de répertoires :
 
 ```
-├── maps/              # Fichiers de cartes (.txt) et lumières (.txt.lights)
-│   ├── map.txt       # Carte par défaut
-│   ├── map.txt.lights # Éclairage pour map.txt
-│   └── ...
-├── textures/         # Fichiers de textures (.bmp)
-│   ├── texture1.bmp  # Texture ID 0
-│   ├── texture2.bmp  # Texture ID 1
-│   └── ...
-├── raycaster         # Exécutable du moteur
-└── map_editor_lights # Éditeur de map avec lumières
+
+├── .vscode/
+|   ├── tasks.json # Compiler le moteur
+|   ├── tasks2.json # Compiler l'éditeur de map
+|   └── ...
+├── build/
+|   ├── textures/ 
+|   |    # Fichiers de textures (.bmp)
+│   |   ├── texture1.bmp  # Texture ID 0
+│   |   ├── texture2.bmp  # Texture ID 1
+│   |   └── ...
+|   ├── maps/  
+|   |        # Fichiers de map (.txt) et lumières (.txt.lights)
+│   |   ├── map.txt       # Map par défaut
+│   |   ├── map.txt.lights # Éclairage pour map.txt
+│   |   └── ...
+|   ├── engine.exe  # Exécutable du moteur
+│   ├── map_editor.exe  # Exécutable de l'editeur de map
+│   └── ...        # .dll essentiels
+└── build.ps1
+ 
 ```
 
 ## Format de map
@@ -120,13 +103,6 @@ LIGHT 3.5 3.5 0.7 0.8 1.0 2.0 5.5
 
 ## Utilisation
 
-## Utilisation
-
-### 1. Création de contenu avec l'éditeur
-```bash
-./map_editor_lights
-```
-
 **Contrôles de l'éditeur :**
 - **TAB** : Basculer entre mode Tiles et Lumières
 - **Mode Tiles** : F/C/W (layers), E/T (vide/solide), clic pour peindre
@@ -140,13 +116,9 @@ LIGHT 3.5 3.5 0.7 0.8 1.0 2.0 5.5
 - **S** : Sauvegarder, **L** : Charger
 
 ### 2. Lancement du moteur
-```bash
-# Avec map par défaut
-./raycaster
 
-# Avec map spécifique  
-./raycaster ma_map
-```
+- Double clique sur engine.exe
+- Double clique sur map_editor.exe
 
 ### 3. Chargement en cours de jeu
 - Appuyez sur **L** pendant le jeu
@@ -190,7 +162,6 @@ LIGHT 3.5 3.5 0.7 0.8 1.0 2.0 5.5
 ### Problème : Performances lentes
 - Réduisez la résolution d'écran
 - Utilisez des textures plus petites (32x32 ou 64x64)
-- Compilez avec l'optimisation `-O2` (déjà inclus dans le Makefile)
 
 ## Améliorations possibles
 
