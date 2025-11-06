@@ -2,8 +2,7 @@
 
 ## 🚀 Lancement
 ```bash
-make editor
-./map_editor_lights
+map_editor.exe
 ```
 
 ## 🎮 Contrôles Généraux
@@ -185,3 +184,4 @@ La console affiche en continu :
 - Layer actuel (en mode Tiles)
 
 ---
+
